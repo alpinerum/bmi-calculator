@@ -8,15 +8,15 @@
             <form>
                 <div class="form-group">
                     <label>Weight in kilograms</label><br>
-                    <input type="number" name="weight" id="weight"/>
+                    <input type="number" name="weight" id="weight" class="form-control"/>
                 </div>
 
                 <div class="form-group">
                     <label>Height in meters</label><br>
-                    <input type="number" name="height" id="height"/>
+                    <input type="number" name="height" id="height" class="form-control"/>
                 </div>
 
-                <button class="btn btn-primary" type="button" onclick="Calculate()">Calculate</button>
+                <button class="btn btn-primary" type="submit" onclick="validateInputs()">Submit</button>
             </form>
             <h3>Your Results</h3>
             <p id="results">
@@ -43,11 +43,24 @@
         </div>
     </body>
     <script>
-        function Calculate() {
-            var weight = parseInt(document.getElementById("weight").value);
-            var height = parseFloat(document.getElementById("height").value);
+        function Calculate(weight, height) {
+            weight = parseInt(weight);
+            height = parseFloat(height);
             var bmi = weight/(height**2);
             document.getElementById("results").innerHTML = "<h4> Results: </h4>Your BMI is " + bmi.toString();
+        }
+        function validateInputs() {
+            var weight = document.getElementById("weight").value;
+            var height = document.getElementById("height").value;
+            if (weight == null || weight == '') {
+                alert("weight is empty");
+            }
+            else if (height == null || height == '') {
+                alert("height is empty");
+            }
+            else {
+                Calculate(weight, height)
+            }
         }
         function reset() {
             document.getElementById("results").innerHTML = "";

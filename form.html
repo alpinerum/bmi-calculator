@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <form>
+                <div class="form-group">
+                    <label>Weight in kilograms</label><br>
+                    <input type="number" name="weight" id="weight"/>
+                </div>
+
+                <div class="form-group">
+                    <label>Height in meters</label><br>
+                    <input type="number" name="height" id="height"/>
+                </div>
+
+                <button class="btn btn-primary" type="button" onclick="Calculate()">Calculate</button>
+            </form>
+            <h3>Your Results</h3>
+            <p id="results">
+
+            </p>
+            <button class="btn btn-primary" type="button" onclick="reset()">Reset</button>
+            <figure>
+                <img src="underweight.jpg" alt="underweight BMI">
+                <figcaption>Underweight BMI</figcaption>
+            </figure>
+            <figure>
+                <img src="normal.webp" alt="normal BMI">
+                <figcaption>Normal BMI</figcaption>
+            </figure>
+            <figure>
+                <img src="overweight.webp" alt="overweight BMI">
+                <figcaption>Overweight BMI</figcaption>
+            </figure>
+            <figure>
+                <img src="obese.JPG" alt="obese BMI">
+                <figcaption>Obese BMI</figcaption>
+            </figure>
+            
+        </div>
+    </body>
+    <script>
+        function Calculate() {
+            var weight = parseInt(document.getElementById("weight").value);
+            var height = parseFloat(document.getElementById("height").value);
+            var bmi = weight/(height**2);
+            document.getElementById("results").innerHTML = "<h4> Results: </h4>Your BMI is " + bmi.toString();
+        }
+        function reset() {
+            document.getElementById("results").innerHTML = "";
+        }
+    </script>
+</html>>
